@@ -1,9 +1,16 @@
 program main
-
-	use lookup_mod, only : interp_1d
-	use o2props_mod, only : O2_CP
 	
 	implicit none
+	
+	interface
+		real function interp_1d(x,xi,yi)
+			real, intent(in) :: x
+			real, intent(in), dimension(:) :: xi, yi
+		end function interp_1d
+		real function o2_cp(T,P)
+			real, intent(in) :: T, P
+		end function o2_cp
+	end interface
 	
 	real, dimension(3) :: xi=(/0.0,1.0,2.0/), yi=(/-1.0,0.0,1.0/)
 	real :: y
